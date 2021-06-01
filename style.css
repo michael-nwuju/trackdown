@@ -1,0 +1,322 @@
+:root{
+    --very-dark-gray: hsl(0, 0%, 17%);
+    --dark-gray: hsl(0, 0%, 59%);
+}
+html{
+    box-sizing: border-box;
+    font-size: 100%;
+}
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+*::selection{
+    background-color: var(--very-dark-gray);
+    color: white;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.125em;
+    font-weight: 400;
+    max-height: 100em;   
+}
+h1, h2, h3, h4, h5, h6, p{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: var(--very-dark-gray);
+    transition: all 200ms ease-in-out;
+}
+a:hover{
+    opacity: 0.7;
+}
+a, a:hover, a:visited, a:focus, a:focus-visible{
+    text-decoration: none;
+}
+button{
+    outline: 0;
+    border: 0;
+    background-color: var(--very-dark-gray);
+    color: white;
+    transition: all 200ms ease-in-out;
+}
+button:hover{
+    cursor: pointer;
+    background-color: white;
+    color: var(--very-dark-gray);
+    border: 1px solid var(--very-dark-gray);
+}
+.tracker-wrap{
+    width: 100%;
+}
+.tracker-head-wrap{
+    height: 12em;
+}
+.tracker-head{
+    position: relative;
+    text-align: center;
+    padding-top: 1em;
+    background-image: url('images/pattern-bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 100%;
+    transition: all 200ms ease-in-out;
+}
+.tracker-head.enabled{
+    background-position: left;
+}
+.tracker-header h1{
+    color: white;
+}
+.tracker-input{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0px;
+    align-items: center;
+    width: 50%;
+    top: 45%;
+}
+.input{
+    width: 150%;
+    height: 3.125em;
+    border-bottom-left-radius: 0.625em;
+    border-top-left-radius: 0.625em;
+    border: 0;
+    padding: 1em;
+}
+.input:focus-visible{
+    outline: 0 !important;
+    border: 0 !important;
+}
+.btn-tracker{
+    height: 3.125em;
+    border-top-right-radius: 0.625em;
+    border-bottom-right-radius: 0.625em;
+    padding: 1.25em;
+    background-image: url('images/icon-arrow.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 20%;
+}
+.btn-tracker:hover{
+    background-image: url('images/icon-arrow-hover.svg');
+}
+.tracker-info-wrap{
+    position: relative;
+    padding-bottom: 2.5em;
+}
+.tracker-info{
+    position: absolute; 
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5%;
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    padding: 1em;
+    height: 6em;
+    background: white;
+    border-radius: 1em;
+    transition: all 200ms ease-in-out;
+}
+.fade-in{
+    animation: fade-in 200ms forwards ease-in;
+}
+.fade-out{
+    animation: fade-out 200ms forwards ease-in-out;
+}
+@keyframes fade-in{
+    from{
+        visibility: hidden;
+        opacity: 0;
+    }
+    
+    to{
+        visibility: visible;
+        opacity: 1;
+    }
+}
+@keyframes fade-out{
+    from{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    to{
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+.tracker-info p{
+    font-size: 0.7em;
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+.tracker-container{
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+.divider{
+    background-color: var(--dark-gray);
+    width: 1px;
+    height: 4em;
+    display: block;
+}
+.tracker-content{
+    padding-top: 5%;
+    color: var(--very-dark-gray) !important;
+    font-weight: 700 !important;
+    font-size: 1em !important;
+}
+.closer{
+    transform: translateY(10%);
+    color: white;
+    height: 35%;
+    width: 3%;
+    border-radius: 1em;
+    transition: all 200ms ease-in-out;
+}
+.closer:hover{
+    animation: shadow 2000ms infinite ease;
+}
+@keyframes shadow{
+    from{
+        box-shadow: 0px 0px 0.7em 0.5em rgba(0, 0, 0, 0.15);
+    }
+    to{
+        box-shadow: 0px;
+    }
+}
+.tracker-body{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.tracker-map{
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+}
+.seemap{
+    visibility: visible !important;
+}
+.seemap.disappear{
+    visibility: hidden !important;
+}
+.marker{
+    background-image: url('images/icon-location.svg');
+    background-size: contain;
+    width: 2.8em; 
+    height: 2.8em;
+}
+.marker:hover{
+    cursor: pointer;
+}
+.mapboxgl-popup{
+    max-width: 11.2em;
+}
+.mapboxgl-popup-content{
+    text-align: center;
+}
+.tracker-alerts-wrap{
+    position: relative;
+}
+.tracker-alert{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: inherit;
+    padding: 1.5em 0.5em;
+    gap: 1em;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: -11.2em;
+    border-radius: 1em;
+    transform: translateX(-50%);
+    background-color: white;
+}
+.disappear{
+    visibility: hidden;
+}
+.fa.fa-warning{
+    background-color: var(--very-dark-gray);
+    color: white;
+    border-radius: 50%;
+    width: 20%;
+    padding: 0.5em 0em 0em 0em;
+    height: 2em;
+    transform: translateX(200%);
+}
+@media screen and (min-width: 768px){
+    .fa.fa-warning{
+        width: 5%;
+        transform: translateX(950%);
+    }
+    .tracker-cta{
+        width: 15% !important;
+        transform: translateX(275%) !important;
+    }
+}
+.tracker-alert p{
+    text-align: center;
+    font-weight: 100 !important;
+    color: var(--dark-gray);
+    font-size: 0.85em;
+}
+.tracker-cta{
+    width: 45%;
+    padding: 0.4em;
+    border-radius: 1em;
+    transform: translateX(60%);
+}
+.tracker-cta:hover{
+    color: black;
+}
+.overlay.enabled{
+    position: fixed;
+    background: linear-gradient(180deg, var(--very-dark-gray), transparent);
+    background-position: center top;
+    background-size: cover;
+    top: 0; right:0; bottom: 0; left: 0;
+    transition: all 200ms ease-in-out;
+}
+@media screen and (max-width: 719px){
+    .tracker-input{
+        width: 80%;
+    }
+    /* .tracker-info-wrap */
+    .tracker-info{
+        top: -150%;
+        height: 700%;
+        gap: 1em;
+        flex-direction: column;
+        padding: 1em 25%;
+        border-radius: 5%;
+    }
+    .tracker-container{
+        width: 100%;
+        flex-direction: column;
+    }
+    .tracker-info p{
+        text-align: center;
+    }
+    .divider{
+        display: none;
+    }
+    .tracker-content{
+        font-size: 1.5em;
+    }
+    .closer{
+        transform: translateX(70%);
+        width: 40%;
+        height: 10%;
+    }   
+}
