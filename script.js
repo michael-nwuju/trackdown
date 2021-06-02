@@ -119,6 +119,7 @@ function trackme(region, country, zone, provider){
 function fetchUrl() {
     fetch('https://geo.ipify.org/api/v1?apiKey='+Api_Key+'&ipAddress='+input.value, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
             'Authorization': 'Bearer f9328cfa962461517d946be606d00f71fd34dd32',
             'Content-Type': 'application/json'
