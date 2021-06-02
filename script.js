@@ -117,7 +117,7 @@ function trackme(region, country, zone, provider){
 }
 
 function fetchUrl() {
-    fetch('https://cryptic-headland-94862.herokuapp.com/https://geo.ipify.org/api/v1?apiKey='+Api_Key+'&ipAddress='+input.value, {
+    fetch('https://geo.ipify.org/api/v1?apiKey='+Api_Key+'&ipAddress='+input.value, {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer f9328cfa962461517d946be606d00f71fd34dd32',
