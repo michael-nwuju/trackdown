@@ -117,20 +117,20 @@ function trackme(region, country, zone, provider){
 }
 
 let proxyURL = 'https://cors-anywhere.herokuapp.com/'
-
-function fetchUrl() {
-    fetch(proxyURL+'https://geo.ipify.org/api/v1?apiKey='+Api_Key+'&ipAddress='+input.value, {
-        method: 'GET'
-    })
-        .then(function(res){
-            res.json();
-        })
-        .then(function(data){
-            trackme(data.location.region, data.location.country, data.location.timzone, data.isp);
-            if (data.ip === undefined) {
-                console.log(data.ip);
-                return
-            }
+const Api_URL = 'https://geo.ipify.org/api/v1?apiKey='
+async function fetchUrl() {
+    const url = Api_URL+Api_Key+'&ipAddress='+input.value
+    const response = await fetch(url);
+    const data = await response.json();
+    trackme(data.location.region, data.location.country, data.location.timzone, data.isp)
+    .catch(function(err){
+        mapContainer.classList.remove('seemap')
+        alert(err)
+    });
+    if (data.ip === undefined) {
+        console.log(data.ip);
+        return
+        }
             /*Script for Mapping
             mapboxgl.accessToken = token;
             let map = new mapboxgl.Map({
@@ -167,13 +167,8 @@ function fetchUrl() {
                 .setHTML(`<h3>`+marker.properties.title+`</h3> <p>`+marker.properties.description+`</p>`)
                 .addTo(map)
             })*/
-        })
-        .catch(function(err){
-            mapContainer.classList.remove('seemap')
-            alert(err)
-        })
-}
-
+        // })
+    }
 function tracker() {
     if (input.value==="" || input.value === null) {
         input.classList.add('disappear');
