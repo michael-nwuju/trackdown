@@ -116,22 +116,17 @@ function trackme(region, country, zone, provider){
     }    
 }
 
-let proxyURL = 'https://cors-anywhere.herokuapp.com/'
 const Api_URL = 'https://geo.ipify.org/api/v1?apiKey='
 async function fetchUrl() {
     const url = Api_URL+Api_Key+'&ipAddress='+input.value
     const response = await fetch(url);
     const data = await response.json();
     trackme(data.location.region, data.location.country, data.location.timzone, data.isp)
-    .catch(function(err){
-        mapContainer.classList.remove('seemap')
-        alert(err)
-    });
     if (data.ip === undefined) {
         console.log(data.ip);
         return
         }
-            /*Script for Mapping
+            /*Script for Mapping */
             mapboxgl.accessToken = token;
             let map = new mapboxgl.Map({
                 container: 'map',
@@ -166,9 +161,8 @@ async function fetchUrl() {
                 }))
                 .setHTML(`<h3>`+marker.properties.title+`</h3> <p>`+marker.properties.description+`</p>`)
                 .addTo(map)
-            })*/
-        // })
-    }
+            })
+}
 function tracker() {
     if (input.value==="" || input.value === null) {
         input.classList.add('disappear');
