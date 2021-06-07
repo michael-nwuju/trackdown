@@ -120,10 +120,7 @@ let proxyURL = 'https://cors-anywhere.herokuapp.com/'
 
 function fetchUrl() {
     fetch(proxyURL+'https://geo.ipify.org/api/v1?apiKey='+Api_Key+'&ipAddress='+input.value, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        method: 'GET'
     })
         .then(function(res){
             res.json();
