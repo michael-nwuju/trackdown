@@ -127,41 +127,41 @@ async function fetchUrl() {
         return
         }
             /*Script for Mapping */
-            mapboxgl.accessToken = token;
-            let map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
-                zoom: 12,
-                center: [data.location.lng, data.location.lat]
-            });
+//             mapboxgl.accessToken = token;
+//             let map = new mapboxgl.Map({
+//                 container: 'map',
+//                 style: 'mapbox://styles/mapbox/streets-v11',
+//                 zoom: 12,
+//                 center: [data.location.lng, data.location.lat]
+//             });
 
-            let geojson = [
-                {
-                    type: 'FeatureCollection',
-                    features: [{
-                        type: 'Feature',
-                        geometry:{
-                            type: 'Point',
-                            coordinates: [data.location.lng, data.location.lat]
-                        },
-                        properties:{
-                            title: data.as.name,
-                            description: data.isp
-                        }
-                    }]
-                }
-            ];
-            geojson.features.forEach(function(marker){
-                let mark = document.createElement('div');
-                mark.classList.add('marker');
-                new mapboxgl.Marker(mark)
-                .setLngLat(marker.geometry.coordinates)
-                .setPopup(new mapboxgl.Popup({
-                    offset: 25
-                }))
-                .setHTML(`<h3>`+marker.properties.title+`</h3> <p>`+marker.properties.description+`</p>`)
-                .addTo(map)
-            })
+//             let geojson = [
+//                 {
+//                     type: 'FeatureCollection',
+//                     features: [{
+//                         type: 'Feature',
+//                         geometry:{
+//                             type: 'Point',
+//                             coordinates: [data.location.lng, data.location.lat]
+//                         },
+//                         properties:{
+//                             title: data.as.name,
+//                             description: data.isp
+//                         }
+//                     }]
+//                 }
+//             ];
+//             geojson.features.forEach(function(marker){
+//                 let mark = document.createElement('div');
+//                 mark.classList.add('marker');
+//                 new mapboxgl.Marker(mark)
+//                 .setLngLat(marker.geometry.coordinates)
+//                 .setPopup(new mapboxgl.Popup({
+//                     offset: 25
+//                 }))
+//                 .setHTML(`<h3>`+marker.properties.title+`</h3> <p>`+marker.properties.description+`</p>`)
+//                 .addTo(map)
+//             })
 }
 function tracker() {
     if (input.value==="" || input.value === null) {
