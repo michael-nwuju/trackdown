@@ -119,7 +119,7 @@ function trackme(region, country, zone, provider){
 let proxyURL = 'https://cors-anywhere.herokuapp.com/'
 
 function fetchUrl() {
-    fetch('https://geo.ipify.org/api/v1?apiKey='+Api_Key+'&ipAddress='+input.value, {
+    fetch(proxyURL+'https://geo.ipify.org/api/v1?apiKey='+Api_Key+'&ipAddress='+input.value, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
