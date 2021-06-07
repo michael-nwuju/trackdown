@@ -125,8 +125,8 @@ function fetchUrl() {
             'Content-Type': 'application/json'
         }
     })
-        .then(function(){
-            return this.json();
+        .then(function(res){
+            res.json();
         })
         .then(function(data){
             trackme(data.location.region, data.location.country, data.location.timzone, data.isp);
